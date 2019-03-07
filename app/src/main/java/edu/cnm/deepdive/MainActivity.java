@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.flick_pick;
+package edu.cnm.deepdive;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
