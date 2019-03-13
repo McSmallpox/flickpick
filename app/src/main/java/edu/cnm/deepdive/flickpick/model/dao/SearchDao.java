@@ -1,6 +1,5 @@
 package edu.cnm.deepdive.flickpick.model.dao;
 
-import static android.icu.text.MessagePattern.ArgType.SELECT;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;

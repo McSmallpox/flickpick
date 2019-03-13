@@ -23,7 +23,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Users/ryanw/intellij/IntelliJ%20IDEA%202018.3.3/plugins/android/lib/android.jar!/images/material_design_icons/hardware/ic_tv_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/C:/Users/ryanw/intellij/IntelliJ%20IDEA%202018.3.3/plugins/android/lib/android.jar!/images/material_design_icons/image/ic_remove_red_eye_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -33,7 +33,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_tv" />
+                            <entry key="outputName" value="ic_eye" />
                             <entry key="sourceFile" value="C:\Users\ryanw" />
                           </map>
                         </option>

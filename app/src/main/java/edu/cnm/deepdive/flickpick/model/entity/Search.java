@@ -21,6 +21,8 @@ public class Search {
 
   private String director;
 
+  private boolean isSpecYear;
+
   private int genDecade;
 
   private int specYear;
@@ -60,6 +62,13 @@ public class Search {
     this.director = director;
   }
 
+  public boolean isSpecYear() {
+    return isSpecYear;
+  }
+
+  public void setSpecYear(boolean specYear) {
+    isSpecYear = specYear;
+  }
   public int getGenDecade() {
     return genDecade;
   }
