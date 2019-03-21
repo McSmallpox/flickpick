@@ -1,25 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="wrap_content"
-  android:layout_height="wrap_content"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
   xmlns:app="http://schemas.android.com/apk/res-auto"
+  app:layout_constraintRight_toRightOf="parent"
   app:layout_constraintLeft_toLeftOf="parent"
-  app:layout_constraintRight_toLeftOf="@+id/fragment_filter">
+  app:layout_constraintBottom_toBottomOf="parent"
+  app:layout_constraintTop_toTopOf="parent"
+  android:background="@color/colorBackground">
 
   <TextView
     android:id="@+id/question_1"
     android:text="Genre"
+    android:textSize="45sp"
+    android:textColor="#000"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:layout_constraintHorizontal_bias="0.2"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintBottom_toTopOf="@+id/question_2"
+    android:paddingBottom="10dp"
+    android:paddingLeft="25dp"
+    android:paddingRight="25dp"
     />
+  <Button
+    android:id="@+id/add_filter_1"
+    android:background="@drawable/ic_control_point_accent"
+    android:layout_width="45dp"
+    android:layout_height="45dp"
+    app:layout_constraintLeft_toRightOf="@id/genre_spinner"
+    app:layout_constraintTop_toBottomOf="@id/question_1"
+    android:paddingBottom="15dp"/>
 
-<!-- TODO implement dropdown menu when you figure out how to do it -->
+  <Spinner
+    android:id="@+id/genre_spinner"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:spinnerMode="dialog"
+    app:layout_constraintTop_toBottomOf="@id/question_1"
+    android:paddingLeft="25dp"
+    android:entries="@array/genre_choices"
+    >
 
-  <TextView
+  </Spinner>
+
+ <!-- <TextView
     android:id="@+id/question_2"
     android:text="Year of Release"
     android:layout_width="wrap_content"
@@ -27,8 +52,15 @@
     app:layout_constraintHorizontal_bias="0.2"
     app:layout_constraintTop_toBottomOf="@id/question_1"
     app:layout_constraintBottom_toTopOf="@+id/question_3"
+    android:paddingBottom="15dp"
     />
-
+  <Button
+    android:transitionName="add_filter_2"
+    android:icon="@drawable/ic_control_point"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintLeft_toRightOf="@id/question_2"
+    android:paddingBottom="15dp"/>
   <TextView
     android:id="@+id/question_3"
     android:text="Director"
@@ -37,7 +69,15 @@
     app:layout_constraintHorizontal_bias="0.2"
     app:layout_constraintTop_toBottomOf="@id/question_2"
     app:layout_constraintBottom_toTopOf="@+id/question_4"
+    android:paddingBottom="15dp"
     />
+  <Button
+    android:transitionName="add_filter_3"
+    android:icon="@drawable/ic_control_point"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintLeft_toRightOf="@id/question_3"
+    android:paddingBottom="15dp"/>
   <TextView
     android:id="@+id/question_4"
     android:text="Actors"
@@ -46,5 +86,14 @@
     app:layout_constraintHorizontal_bias="0.2"
     app:layout_constraintTop_toBottomOf="@+id/question_3"
     app:layout_constraintBottom_toTopOf="parent"
+    android:paddingBottom="15dp"
     />
+  <Button
+    android:transitionName="add_filter_4"
+    android:icon="@drawable/ic_control_point"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintLeft_toRightOf="@id/question_4"
+    android:paddingBottom="15dp"/>
+    -->
 </android.support.constraint.ConstraintLayout>

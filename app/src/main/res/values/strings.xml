@@ -12,4 +12,30 @@
   <string name="home">Home</string>
   <string name="view_your_watchlist">View Your Watchlist</string>
   <string name="communicate">Communicate</string>
+
+  <string-array name="genre_choices">
+    <item>Action</item>
+    <item>Adventure</item>
+    <item>Animation</item>
+    <item>Biography</item>
+    <item>Comedy</item>
+    <item>Crime</item>
+    <item>Documentary</item>
+    <item>Drama</item>
+    <item>Family</item>
+    <item>Fantasy</item>
+    <item>Film Noir</item>
+    <item>History</item>
+    <item>Horror</item>
+    <item>Musical</item>
+    <item>Music</item>
+    <item>Mystery</item>
+    <item>Romance</item>
+    <item>Sci-Fi</item>
+    <item>Short</item>
+    <item>Sports</item>
+    <item>Thriller</item>
+    <item>War</item>
+    <item>Western</item>
+  </string-array>
 </resources>
