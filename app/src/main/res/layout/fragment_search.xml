@@ -11,6 +11,14 @@
   android:background="@color/colorBackground">
 
   <TextView
+    android:id="@+id/filter_container"
+    android:layout_width="25dp"
+    android:layout_height="match_parent"
+    android:background="@drawable/filter_back"
+    app:layout_constraintHorizontal_bias="2"
+    app:layout_constraintTop_toTopOf="parent"
+    />
+  <TextView
     android:id="@+id/question_1"
     android:text="Genre"
     android:textSize="45sp"
@@ -24,10 +32,10 @@
     android:paddingRight="25dp"
     />
   <Button
-    android:id="@+id/add_filter_1"
+    android:id="@+id/add_genre"
     android:background="@drawable/ic_control_point_accent"
-    android:layout_width="45dp"
-    android:layout_height="45dp"
+    android:layout_width="40dp"
+    android:layout_height="40dp"
     app:layout_constraintLeft_toRightOf="@id/genre_spinner"
     app:layout_constraintTop_toBottomOf="@id/question_1"
     android:paddingBottom="15dp"/>

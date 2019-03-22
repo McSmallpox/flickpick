@@ -38,4 +38,19 @@
     <item>War</item>
     <item>Western</item>
   </string-array>
+
+  <string-array name="decade_choices">
+  <item>1900s</item>
+  <item>1910s</item>
+  <item>1920s</item>
+  <item>1930s</item>
+  <item>1940s</item>
+  <item>1950s</item>
+  <item>1960s</item>
+  <item>1970s</item>
+  <item>1980s</item>
+  <item>1990s</item>
+  <item>2000s</item>
+  <item>2010s</item>
+  </string-array>
 </resources>
