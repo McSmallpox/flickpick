@@ -10,25 +10,28 @@
   app:layout_constraintTop_toTopOf="parent"
   android:background="@color/colorBackground">
 
-  <TextView
+  <ListView
     android:id="@+id/filter_container"
-    android:layout_width="25dp"
-    android:layout_height="match_parent"
+    android:layout_width="150dp"
+    android:layout_height="350dp"
     android:background="@drawable/filter_back"
-    app:layout_constraintHorizontal_bias="2"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintLeft_toRightOf="@id/add_genre"
     app:layout_constraintTop_toTopOf="parent"
+    android:layout_marginTop="25dp"
+    android:layout_marginLeft="15dp"
     />
   <TextView
     android:id="@+id/question_1"
     android:text="Genre"
-    android:textSize="45sp"
+    android:textSize="25sp"
     android:textColor="#000"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:layout_constraintHorizontal_bias="0.2"
     app:layout_constraintTop_toTopOf="parent"
     android:paddingBottom="10dp"
-    android:paddingLeft="25dp"
+    android:paddingLeft="15dp"
     android:paddingRight="25dp"
     />
   <Button
@@ -38,7 +41,7 @@
     android:layout_height="40dp"
     app:layout_constraintLeft_toRightOf="@id/genre_spinner"
     app:layout_constraintTop_toBottomOf="@id/question_1"
-    android:paddingBottom="15dp"/>
+    android:paddingBottom="20dp"/>
 
   <Spinner
     android:id="@+id/genre_spinner"
@@ -46,62 +49,88 @@
     android:layout_height="wrap_content"
     android:spinnerMode="dialog"
     app:layout_constraintTop_toBottomOf="@id/question_1"
-    android:paddingLeft="25dp"
+    android:paddingLeft="15dp"
     android:entries="@array/genre_choices"
     >
-
   </Spinner>
 
- <!-- <TextView
+  <TextView
     android:id="@+id/question_2"
     android:text="Year of Release"
+    android:textSize="25sp"
+    android:textColor="#000"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:layout_constraintHorizontal_bias="0.2"
-    app:layout_constraintTop_toBottomOf="@id/question_1"
-    app:layout_constraintBottom_toTopOf="@+id/question_3"
-    android:paddingBottom="15dp"
+    app:layout_constraintTop_toBottomOf="@id/genre_spinner"
+    android:paddingBottom="10dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="25dp"
     />
-  <Button
-    android:transitionName="add_filter_2"
-    android:icon="@drawable/ic_control_point"
-    android:layout_width="wrap_content"
+
+  <android.support.design.widget.TextInputLayout
+    android:id="@+id/year_entry"
+    android:layout_width="0dp"
     android:layout_height="wrap_content"
-    app:layout_constraintLeft_toRightOf="@id/question_2"
-    android:paddingBottom="15dp"/>
-  <TextView
-    android:id="@+id/question_3"
-    android:text="Director"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:layout_constraintHorizontal_bias="0.2"
+    app:layout_constraintWidth_percent="0.5"
+    app:layout_constraintWidth_max="250dp"
+    app:layout_constraintWidth_min="150dp"
+    app:layout_constraintHorizontal_bias="0.1"
     app:layout_constraintTop_toBottomOf="@id/question_2"
-    app:layout_constraintBottom_toTopOf="@+id/question_4"
-    android:paddingBottom="15dp"
-    />
-  <Button
-    android:transitionName="add_filter_3"
-    android:icon="@drawable/ic_control_point"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:layout_constraintLeft_toRightOf="@id/question_3"
-    android:paddingBottom="15dp"/>
-  <TextView
-    android:id="@+id/question_4"
-    android:text="Actors"
+    android:paddingLeft="15dp"
+    app:hintEnabled="true"
+    app:hintAnimationEnabled="true">
+
+    <android.support.design.widget.TextInputEditText
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:hint="Enter specific year..."/>
+
+  </android.support.design.widget.TextInputLayout>
+
+  <ListView
+    android:id="@+id/trivial_1"
+    android:text="or"
+    android:textSize="20sp"
+    android:textColor="#000"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:layout_constraintHorizontal_bias="0.2"
-    app:layout_constraintTop_toBottomOf="@+id/question_3"
-    app:layout_constraintBottom_toTopOf="parent"
-    android:paddingBottom="15dp"
+    app:layout_constraintTop_toBottomOf="@id/year_entry"
+    android:paddingBottom="10dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="25dp"
     />
-  <Button
-    android:transitionName="add_filter_4"
-    android:icon="@drawable/ic_control_point"
+
+  <Spinner
+    android:id="@+id/year_spinner"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    app:layout_constraintLeft_toRightOf="@id/question_4"
-    android:paddingBottom="15dp"/>
-    -->
+    android:spinnerMode="dialog"
+    app:layout_constraintTop_toBottomOf="@id/trivial_1"
+    android:paddingLeft="15dp"
+    android:entries="@array/decade_choices"
+    >
+  </Spinner>
+
+  <Button
+    android:id="@+id/add_year_single"
+    android:background="@drawable/ic_control_point_accent"
+    android:layout_width="40dp"
+    android:layout_height="40dp"
+    app:layout_constraintLeft_toRightOf="@id/year_entry"
+    app:layout_constraintTop_toBottomOf="@id/question_2"
+    app:layout_constraintBottom_toTopOf="@id/trivial_1"
+    android:layout_marginBottom="15dp"/>
+
+  <Button
+    android:id="@+id/add_year_decade"
+    android:background="@drawable/ic_control_point_accent"
+    android:layout_width="40dp"
+    android:layout_height="40dp"
+    app:layout_constraintLeft_toRightOf="@id/year_spinner"
+    app:layout_constraintTop_toBottomOf="@id/trivial_1"
+
+    android:layout_marginBottom="15dp"/>
+
 </android.support.constraint.ConstraintLayout>

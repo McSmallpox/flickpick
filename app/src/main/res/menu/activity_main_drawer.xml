@@ -9,7 +9,7 @@
       android:icon="@drawable/ic_home_black_24dp"
       android:title="@string/home"/>
     <item
-      android:id="@+id/findMovie"
+      android:id="@+id/find_movie"
       android:icon="@drawable/ic_tv"
       android:title="@string/find_film"/>
     <item
