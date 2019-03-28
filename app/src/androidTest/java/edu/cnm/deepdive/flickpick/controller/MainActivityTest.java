@@ -29,5 +29,5 @@ public class MainActivityTest {
       onView(withId(R.id.add_genre))
           .check(matches(isDisplayed()));
 
- }*/
-}
+ }
+}*/

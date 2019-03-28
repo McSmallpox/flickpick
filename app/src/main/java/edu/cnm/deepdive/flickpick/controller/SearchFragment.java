@@ -11,26 +11,44 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import edu.cnm.deepdive.flickpick.R;
 import java.util.ArrayList;
 
 public class SearchFragment extends Fragment implements OnClickListener {
 
+  ListView listView;
+
+  ArrayList<String> holdFilter;
   ArrayList<String> genre;
   ArrayList<Integer> year;
-  String[] director;
-  String[] actors;
-  String[] writer;
-  String[] composer;
+  ArrayList<String> director;
+  ArrayList<String> actors;
+  ArrayList<ArrayList<String>> search;
 
+
+  /**
+   *  Instantiates UI on creation of fragment.
+   * @param inflater inflates fragment_search layout
+   * @param container
+   * @param savedInstanceState
+   * @return
+   */
   @Nullable
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_search, container, false);
+    listView = view.findViewById(R.id.lv);
+    holdFilter = new ArrayList<>();
     genre = new ArrayList<>();
     year = new ArrayList<>();
+    director = new ArrayList<>();
+    actors = new ArrayList<>();
+    search = new ArrayList<>();
     return view;
   }
 
@@ -54,35 +72,44 @@ public class SearchFragment extends Fragment implements OnClickListener {
     int pos = genre_spinner.getSelectedItemPosition();
     String selectedGenre = adapter.getItem(pos);
     genre.add(selectedGenre);
+    updateFilter(selectedGenre);
   }
 
   private void onYearSingleClicked() {
     View view = getView();
-    TextInputLayout year_input = view.findViewById(R.id.year_entry);
-    String selectedYear = year_input.getEditText().getText().toString();
+    TextInputLayout year_input = view.findViewById(R.id.year_entry_holder);
+    EditText input = view.findViewById(R.id.year_entry);
+    String selectedYear = input.getText().toString();
     int yearInt = Integer.parseInt(selectedYear);
     year.add(yearInt);
+    updateFilter(selectedYear);
   }
 
   private void onDecadeClicked() {
     View view = getView();
     Spinner year_spinner = view.findViewById(R.id.year_spinner);
     ArrayAdapter<String> adapter = (ArrayAdapter<String>) year_spinner.getAdapter();
-    int[] temp = new int[10];
     int pos = year_spinner.getSelectedItemPosition();
     String selectedYears = adapter.getItem(pos);
     String selectedYearsReal = selectedYears.replaceAll("[^0-9]", "");
     selectedYears = selectedYearsReal;
     int yearsInt = Integer.parseInt(selectedYears);
-    for (int i = 0; i <= yearsInt + 9; i++) {
-      for (int j = 0; j <= year.size() - 1; j++) {
-        if (year.get(j) != i) {
-          year.add(i);
-        }
+      for (int i = yearsInt; i <= yearsInt + 9; i++) {
+        String tempString = Integer.toString(i);
+        year.add(i);
+        updateFilter(tempString);
       }
     }
+
+  private void updateFilter(String filter) {
+    holdFilter.add(filter);
+    ArrayAdapter adapter = new ArrayAdapter(getActivity(), R.layout.list_item, holdFilter);
+    listView.setAdapter(adapter);
   }
 
+  private void finalizeSearch() {
+
+  }
 
   @Override
   public void onClick(View v) {
