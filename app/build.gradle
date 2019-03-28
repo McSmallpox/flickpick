@@ -1,14 +1,21 @@
 apply plugin: 'com.android.application'
 
+def getServiceProperty(String property) {
+    Properties properties = new Properties();
+    properties.load(new FileInputStream("../../services/movie.properties"));
+    return String.format("\"%s\"", properties.getProperty(property));
+}
+
 android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "edu.cnm.deepdive.flickpick"
-        minSdkVersion 21
+        minSdkVersion 26
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "API_KEY", getServiceProperty("api_key")
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
@@ -21,6 +28,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
     }
 }
 

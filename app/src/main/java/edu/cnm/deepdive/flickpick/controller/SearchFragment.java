@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,7 +17,13 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import edu.cnm.deepdive.flickpick.R;
+import edu.cnm.deepdive.flickpick.model.entity.Search;
+import edu.cnm.deepdive.flickpick.model.pojo.MovieResult;
+import edu.cnm.deepdive.flickpick.service.MovieWebService.SearchMoviesTask;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class SearchFragment extends Fragment implements OnClickListener {
 
@@ -79,10 +86,18 @@ public class SearchFragment extends Fragment implements OnClickListener {
     View view = getView();
     TextInputLayout year_input = view.findViewById(R.id.year_entry_holder);
     EditText input = view.findViewById(R.id.year_entry);
-    String selectedYear = input.getText().toString();
+    String selectedYear = year_input.getEditText().getText().toString();
     int yearInt = Integer.parseInt(selectedYear);
     year.add(yearInt);
     updateFilter(selectedYear);
+    Search search = new Search();
+    search.setSpecYear(yearInt);
+    new SearchMoviesTask(){
+      @Override
+      protected void onPostExecute(List<MovieResult> movieResults) {
+        Log.v("movies", Arrays.toString(movieResults.toArray()));
+      }
+    }.execute(search);
   }
 
   private void onDecadeClicked() {
