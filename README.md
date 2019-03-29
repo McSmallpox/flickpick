@@ -1,13 +1,15 @@
-# flickpick
+# Flickpick
 
-## Google-based film recommendations
+## Film recommendations based on user-determined filters
 
-## A. The app is called "Flickpick" (working title).
+App name: Flickpick
 
-## B. Wireframes in Docs directory.
+Sort by a multitude of specifications, including:
+ *Genre
+ *Year of Release
+ *Director
+ *Actors present in the film
+ 
+This app will be useful for all, film buffs and casual watchers alike, as long as they are ever in need of entertainment.
 
-## C. User Stories in Docs directory.
-
-## D. This app would require internet access, as it pulls its results from Google.
-
-## E. It would only need to connect to Google and pull the data back to the app.
+The app does in fact require internet access, as to pull the information from IMDb and display it.
