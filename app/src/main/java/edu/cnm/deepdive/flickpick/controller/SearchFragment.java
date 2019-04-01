@@ -25,6 +25,15 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ *
+ * @author Ryan Lee
+ * @version 1.0
+ *
+ * Fragment in which users pass filters by which they want to search for films.
+ * Includes buttons in xml which, when clicked, invoke methods onGenreClicked(), onYearSingleSelected(),
+ * and onDecadeSelected().
+ */
 public class SearchFragment extends Fragment implements OnClickListener {
 
   ListView listView;
@@ -38,11 +47,11 @@ public class SearchFragment extends Fragment implements OnClickListener {
 
 
   /**
-   *  Instantiates UI on creation of fragment.
+   *  Inflates UI on creation of fragment and instantiates ArrayLists.
    * @param inflater inflates fragment_search layout
    * @param container
    * @param savedInstanceState
-   * @return
+   * @return view with inflated XML.
    */
   @Nullable
   @Override
@@ -59,6 +68,10 @@ public class SearchFragment extends Fragment implements OnClickListener {
     return view;
   }
 
+  /**
+   * Instantiating buttons for use in the UI.
+   * @param savedInstanceState
+   */
   @Override
   public void onActivityCreated(@Nullable Bundle savedInstanceState) {
     super.onActivityCreated(savedInstanceState);
@@ -72,6 +85,10 @@ public class SearchFragment extends Fragment implements OnClickListener {
     add_decade.setOnClickListener(this);
   }
 
+  /**
+   * Invoked when R.id.add_genre is clicked. Adds selected entry to the genre ArrayList
+   * and invokes UpdateFilter().
+   */
   private void onGenreClicked() {
     View view = getView();
     Spinner genre_spinner = view.findViewById(R.id.genre_spinner);
@@ -82,6 +99,10 @@ public class SearchFragment extends Fragment implements OnClickListener {
     updateFilter(selectedGenre);
   }
 
+  /**
+   * Invokes when R.id.add_year_single is clicked. Adds selected entry to the year ArrayList
+   * and invokes UpdateFilter(). Also Overrides onPostExecute method to return movies released in the selected year.
+   */
   private void onYearSingleClicked() {
     View view = getView();
     TextInputLayout year_input = view.findViewById(R.id.year_entry_holder);
@@ -100,6 +121,10 @@ public class SearchFragment extends Fragment implements OnClickListener {
     }.execute(search);
   }
 
+  /**
+   * Invokes when R.id.add_year_decade is clicked. Adds selected all years of the selected decade (ex. selected decade is 1990,
+   * will add 1990 - 1999) to year ArrayList. Invokes UpdateFilter().
+   */
   private void onDecadeClicked() {
     View view = getView();
     Spinner year_spinner = view.findViewById(R.id.year_spinner);
@@ -116,16 +141,21 @@ public class SearchFragment extends Fragment implements OnClickListener {
       }
     }
 
+  /**
+   * Updates ListView within R.id.filter_container with filters passed into it whenever a method is called upon clicking a button.
+   * @param filter Passed into when the method is invoked in other methods, such as onGenreClicked(), and will display on the ListView.
+   */
   private void updateFilter(String filter) {
     holdFilter.add(filter);
     ArrayAdapter adapter = new ArrayAdapter(getActivity(), R.layout.list_item, holdFilter);
     listView.setAdapter(adapter);
   }
 
-  private void finalizeSearch() {
-
-  }
-
+  /**
+   * Invokes OnGenreClicked(), onYearSingleClicked(), or onDecadeClicked() whenever their corresponding buttons are clicked.
+   * Selected filters are added to their respective ArrayLists and updateFilter() is invoked.
+   * @param v
+   */
   @Override
   public void onClick(View v) {
     switch (v.getId()) {

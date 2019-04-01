@@ -1,11 +1,25 @@
-/*package edu.cnm.deepdive.flickpick.controller;
+package edu.cnm.deepdive.flickpick.controller;
 
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View.OnClickListener;
 import android.widget.Toast;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
+import edu.cnm.deepdive.flickpick.R;
+import edu.cnm.deepdive.flickpick.service.GoogleSignInService;
 
+/**
+ * @author Ryan Lee
+ * @version 1.0
+ *
+ * Holds methods enabling user to log in using a google account.
+ */
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -43,6 +57,7 @@ public class LoginActivity extends AppCompatActivity {
     }
   }
 
+
   private void signIn() {
     Intent intent = GoogleSignInService.getInstance().getClient().getSignInIntent();
     startActivityForResult(intent, LOGIN_REQUEST_CODE);
@@ -54,4 +69,4 @@ public class LoginActivity extends AppCompatActivity {
     startActivity(intent);
   }
 
-}*/
+}

@@ -4,6 +4,11 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
+/**
+ * @author Ryan Lee
+ * @version 1.0
+ */
+
 public class MovieResult {
 
   @SerializedName("vote_count")

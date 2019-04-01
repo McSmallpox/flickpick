@@ -9,6 +9,10 @@ import android.arch.persistence.room.Query;
 import edu.cnm.deepdive.flickpick.model.entity.User;
 import java.util.List;
 
+/**
+ * @author Ryan Lee
+ * @version 1.0
+ */
 
 @Dao
 public interface UserDao {

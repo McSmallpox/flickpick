@@ -5,10 +5,10 @@
 App name: Flickpick
 
 Sort by a multitude of specifications, including:
- *Genre
- *Year of Release
- *Director
- *Actors present in the film
+*Genre
+*Year of Release
+*Director
+*Actors present in the film
  
 This app will be useful for all, film buffs and casual watchers alike, as long as they are ever in need of entertainment.
 

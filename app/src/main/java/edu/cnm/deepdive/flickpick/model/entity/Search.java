@@ -5,6 +5,10 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import java.util.List;
 
+/**
+ * @author Ryan Lee
+ * @version 1.0
+ */
 
 @Entity
 public class Search {
@@ -15,9 +19,9 @@ public class Search {
 // verify whether user is searching for movies or TV shows.
   private boolean tvShow;
 
-  private List<String> actor;
+  private String actor;
 
-  private List<String> genre;
+  private String genre;
 
   private String director;
 
@@ -46,11 +50,19 @@ public class Search {
     this.tvShow = tvShow;
   }
 
-  public List<String> getGenre() {
+  public String getActor() {
+    return actor;
+  }
+
+  public void setActor(String actor) {
+    this.actor = actor;
+  }
+
+  public String getGenre() {
     return genre;
   }
 
-  public void setGenre(List<String> genre) {
+  public void setGenre(String genre) {
     this.genre = genre;
   }
 
@@ -83,13 +95,5 @@ public class Search {
 
   public void setSpecYear(int specYear) {
     this.specYear = specYear;
-  }
-
-  public List<String> getActor() {
-    return actor;
-  }
-
-  public void setActor(List<String> actor) {
-    this.actor = actor;
   }
 }

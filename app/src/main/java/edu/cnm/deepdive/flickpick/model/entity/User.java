@@ -5,6 +5,11 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import java.util.List;
 
+/**
+ * @author Ryan Lee
+ * @version 1.0
+ */
+
 @Entity (tableName = "movieInfo")
 public class User {
 
@@ -14,7 +19,7 @@ public class User {
 
   private String favGenre;
 
-  private List<String> recentSearch;
+  private String recentSearch;
 
 
 
@@ -34,12 +39,11 @@ public class User {
     this.favGenre = favGenre;
   }
 
-  public List<String> getRecentSearch() {
+  public String getRecentSearch() {
     return recentSearch;
   }
 
-  public void setRecentSearch(List<String> recentSearch) {
+  public void setRecentSearch(String recentSearch) {
     this.recentSearch = recentSearch;
   }
-
 }

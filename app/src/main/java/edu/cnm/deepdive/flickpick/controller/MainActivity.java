@@ -1,5 +1,6 @@
 package edu.cnm.deepdive.flickpick.controller;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,6 +14,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import edu.cnm.deepdive.flickpick.R;
+import edu.cnm.deepdive.flickpick.service.GoogleSignInService;
+
+
+/**
+ * @author Ryan Lee
+ * @version 1.0
+ */
 
 public class MainActivity extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener {
@@ -62,18 +70,16 @@ public class MainActivity extends AppCompatActivity
 
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
-    // Handle action bar item clicks here. The action bar will
-    // automatically handle clicks on the Home/Up button, so long
-    // as you specify a parent activity in AndroidManifest.xml.
+    boolean handled = true;
     int id = item.getItemId();
 
-    //noinspection SimplifiableIfStatement
-    if (id == R.id.action_settings) {
-      return true;
+    if (id == R.id.sign_out) {
+      signOut();
     }
 
     return super.onOptionsItemSelected(item);
   }
+
 
   @SuppressWarnings("StatementWithEmptyBody")
   @Override
@@ -82,8 +88,9 @@ public class MainActivity extends AppCompatActivity
     int id = item.getItemId();
 
     if (id == R.id.find_movie) {
-      getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SearchFragment()).commit();
-   } /*else if (id == R.id.navigation_home) {
+      getSupportFragmentManager().beginTransaction()
+          .replace(R.id.fragment_container, new SearchFragment()).commit();
+    } /*else if (id == R.id.navigation_home) {
       getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, MainActivity()).commit();
      } else if (id == R.id.nav_manage) {
 
@@ -93,8 +100,22 @@ public class MainActivity extends AppCompatActivity
 
     }*/
 
-      DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-      drawer.closeDrawer(GravityCompat.START);
-      return true;
-    }
+    DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+    drawer.closeDrawer(GravityCompat.START);
+    return true;
+  }
+
+  /**
+   * Adds sign-out button to options menu.
+   */
+  private void signOut() {
+    GoogleSignInService.getInstance().getClient()
+        .signOut()
+        .addOnCompleteListener(this, (task) -> {
+          GoogleSignInService.getInstance().setAccount(null);
+          Intent intent = new Intent(this, LoginActivity.class);
+          intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+          startActivity(intent);
+        });
+  }
 }

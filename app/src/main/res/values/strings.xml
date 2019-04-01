@@ -13,6 +13,7 @@
   <string name="view_your_watchlist">View Your Watchlist</string>
   <string name="communicate">Communicate</string>
   <string name="base_url">https://api.themoviedb.org/</string>
+  <string name="login_failure_message">Invalid Google username/password entered. Please check your credentials and try again.</string>
 
   <string-array name="genre_choices">
     <item>Action</item>
